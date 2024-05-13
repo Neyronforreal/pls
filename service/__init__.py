@@ -7,6 +7,7 @@ class AddToysValidator(BaseModel):
     toy_name: str
     count_toy: int
     toy_price: float
+    toy_photo: str
 
 
 class DeleteToysValidator(BaseModel):

@@ -55,8 +55,8 @@ async def edit_toy(data: EditToysValidator):
 async def add_photo(toy_id: int, toy_photo: UploadFile = File(...)):
     with open(f'photo/{toy_photo.filename}', 'wb+') as file:
         photo = await toy_photo.read()
-        file.write(photo_igrushek)
+        file.write(photo)
 
-    photo = add_toy_photo_db(toy_id=toy_id, toy_photo=f'/media_igreshel/{toy_photo.filename}')
+    photo = add_toy_photo_db(toy_id=toy_id, toy_photo=f'/media/{toy_photo.filename}')
 
     return {'message': {"Картинка для игрушки, все фото": photo}}

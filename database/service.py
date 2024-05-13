@@ -3,10 +3,10 @@ from datetime import datetime
 from database.models import Service
 
 
-def add_toy_db(toy_type, toy_name, count_toy, toy_price):
+def add_toy_db(toy_type, toy_name, count_toy, toy_price,toy_photo):
     with next(get_db()) as db:
         new_toy = Service(toy_type=toy_type, toy_name=toy_name,
-                           count_toy=count_toy, toy_price=toy_price)
+                           count_toy=count_toy, toy_price=toy_price,toy_photo=toy_photo)
         db.add(new_toy)
         db.commit()
         return {'message': f'Игрушка успешно добавлена, id - {new_toy.toy_id}'}

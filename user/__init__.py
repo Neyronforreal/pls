@@ -12,12 +12,12 @@ class RegisterValidator(BaseModel):
 
 
 class DeleteUserValidator(BaseModel):
-    id: int
+    user_id: int
 
 
 # Валидатор для изменения пользователя
 class EditUserValidator(BaseModel):
-    id: int
+    user_id: int
     phone_number: str
     email: str
     password: str

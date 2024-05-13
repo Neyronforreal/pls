@@ -33,7 +33,8 @@ async def get_user(user_id: int = 0):
 
 @user_router.delete('/delete-user')
 async def delete_user(data: DeleteUserValidator):
-    result = delete_user_db(**data.model_dump())
+    user_id = data.user_id
+    result = delete_user_db(user_id)
 
     if result:
         return {'message': result}

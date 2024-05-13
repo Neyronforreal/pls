@@ -1,7 +1,9 @@
-from database.models import User
+
 from database import get_db
 from datetime import datetime
 from sqlalchemy.orm import Session
+
+from database.models import User
 
 
 # Rегистрация пользователя
@@ -30,28 +32,28 @@ def get_all_users_db():
 
 
 # Poluchit opredelennogo usera
-def get_exact_user_db(id):
+def get_exact_user_db(user_id):
     db = next(get_db())
 
-    exact_user = db.query(User).filter_by(id=id).first()
+    exact_user = db.query(User).filter_by(user_id=user_id).first()
 
     return exact_user
 
 
-def delete_user_db(id):
+def delete_user_db(user_id):
     db = next(get_db())
 
-    delete_user = db.query(User).filter_by(id=id).first()
+    delete_user = db.query(User).filter_by(user_id=user_id).first()
 
     db.delete(delete_user)
     db.commit()
-    return f'Юзер с {id} успешно удален'
+    return f'Юзер с {user_id} успешно удален'
 
 
-def edit_user_db(id, phone_number, email, password, city):
+def edit_user_db(user_id, phone_number, email, password, city):
     db = next(get_db())
 
-    exact_user = db.query(User).filter_by(id=id).first()
+    exact_user = db.query(User).filter_by(user_id=user_id).first()
 
     if exact_user:
         if email is not None:

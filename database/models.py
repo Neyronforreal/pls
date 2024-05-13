@@ -5,7 +5,7 @@ from database import Base
 
 class User(Base):
     __tablename__ = 'users'
-    id = Column(Integer, primary_key=True, autoincrement=True)
+    user_id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String)
     surname = Column(String)
     email = Column(String)
