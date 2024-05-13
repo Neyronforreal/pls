@@ -8,7 +8,8 @@ from user.user_api import user_router
 from database import Base, engine
 
 Base.metadata.create_all(bind=engine)
-app = FastAPI(docs_url='/')
+app = FastAPI(docs_url='/',title='Фатхулла и Ахат чушаны\n'
+                                 'Оссобено фатхулла')
 
 app.include_router(user_router)
 app.include_router(toy_router)

@@ -74,3 +74,12 @@ def edit_user_db(user_id, phone_number, email, password, city):
 
     else:
         return {'message': 'Не удалось найти пользователя с указанным идентификатором'}
+
+
+def check_user_password_db(login,password):
+    db = next(get_db())
+    exist = db.query(User).filter_by(phone_number=login,password=password).first()
+    if exist:
+        return True
+    return False
+

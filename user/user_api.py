@@ -1,8 +1,7 @@
 from fastapi import APIRouter
 from user import RegisterValidator, DeleteUserValidator, EditUserValidator
 
-from database.userservice import edit_user_db, delete_user_db, register_user_db, get_all_users_db, \
-    get_exact_user_db
+from database.userservice import *
 
 user_router = APIRouter(prefix='/user', tags=['Управление Пользователями'])
 
@@ -51,3 +50,11 @@ async def edit_user(data: EditUserValidator):
         return {'message': result}
     else:
         return {'message': "Пользователь не найден"}
+
+
+@user_router.post('/api/login')
+async def login_user(login: str, password: str):
+    checking = check_user_password_db(login=login, password=password)
+    if checking:
+        return {'status': 1, 'message': "Enterd successfully"}
+    return {"status": 0, "message": "Error"}
